@@ -1,5 +1,13 @@
-def get_inputs(filename)
-  rows = File.open(filename).read.strip.split("\n")
+def get_mode()
+  arguments = ARGV
+  return 'example' if arguments.empty?
+  mode = arguments[0]
+  return mode if ['example','input'].include? mode
+  raise ArgumentError, "Invalid Mode: #{mode}"
+end
+
+def get_inputs(mode)
+  rows = File.open("./day-01/#{mode}.txt").read.strip.split("\n")
   list1 = []
   list2 = []
 
@@ -12,8 +20,8 @@ def get_inputs(filename)
   [list1.sort, list2.sort]
 end
 
-def execute(filename = 'example.txt')
-  inputs = get_inputs filename
+def execute(mode)
+  inputs = get_inputs mode
   puts "List 1 length = #{inputs.first.size}"
   puts "List 2 length = #{inputs.last.size}"
 
@@ -38,4 +46,5 @@ def execute(filename = 'example.txt')
   puts "Similarity Score = #{similarity}"
 end
 
-execute()
+mode = get_mode
+execute(mode)
