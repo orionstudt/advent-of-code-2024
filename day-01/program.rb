@@ -34,8 +34,8 @@ def execute(mode)
 
     # do distance
     current_distance = (a - b).abs
+    puts "Current Distance ##{i} = #{distance} + #{current_distance} (#{a} - #{b})"
     distance = distance + current_distance
-    puts "Current Distance #{i} = #{distance} + #{current_distance} (#{a} - #{b})"
 
     # do similarity
     appearances = inputs.last.select { |x| x == a }.size
