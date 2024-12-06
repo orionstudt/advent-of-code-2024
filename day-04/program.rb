@@ -2,7 +2,7 @@ def get_mode()
   arguments = ARGV
   return 'example' if arguments.empty?
   mode = arguments[0]
-  return mode if ['example','example2','input'].include? mode
+  return mode if ['example','input'].include? mode
   raise ArgumentError, "Invalid Mode: #{mode}"
 end
 
